@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sir Model Interactive Plot</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+<body  >
+<h1 style="text-align: center;">SIR Model For Pandemic</h1>
+<div class="login">
+    
+	<form action="{{ url_for('predict')}}" method="post">
+		<label  for="beta">Beta:</label>
+		<input  type="text" name="beta" value="{{request.form['beta'] if request.form['beta'] else '0.3'}}" /><br>
+		<label  for="gamma">Gamma:</label>
+		<input type="text" name="gamma" value="{{request.form['gamma'] if request.form['gamma'] else '0.1'}}" />
+		<button type="submit" name="submit" id="subBtn">Submit</button>
+	</form>
+
+	<div  >
+        {% block content%}{%endblock%}
+	</div>
+</div>
+</body>
+</html>
