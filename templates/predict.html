@@ -1,0 +1,73 @@
+{% extends "index.html" %} 
+
+
+{% block content %}  
+    <h3 class="text-center">{{title}}</h3>   
+   <canvas id="myChart" style="width:100%;height:100%;" ></canvas> 
+  <script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+    
+    xAxisID:'Time /days',
+    yAxisID:'Number (1000s)',
+    data: {
+        labels: {{xlabel}},
+         datasets: [{
+            label: 'Susceptible',
+            fill: false,
+            backgroundColor: 'rgb(23,97,113)',
+            borderColor: 'rgb(23,97,113)',
+            data: {{y1}}
+        },
+        {
+            label: 'Infected',
+            fill: false,
+            backgroundColor: 'rgb(204,2,53)',
+            borderColor: 'rgb(204,2,53)',
+            data: {{y2}}
+            },
+        {
+            label: 'Recovered with immunity',
+            fill: false,
+            backgroundColor: 'rgb(251,194,195)',
+            borderColor: 'rgb(251,194,195)',
+            data: {{y3}}
+            }
+        ]
+    },
+     options: {
+         reponsive:true,
+        scales: {
+           xAxes: [{
+                   display:true,
+                   scaleLabel: {
+                       display:true,
+                       labelString: 'Time /days',
+                       fontSize: 20,
+                       color:'rgb(169, 169, 169)'
+                   },
+                   ticks: {
+                    fontSize: 20
+                   }
+                  }],
+          yAxes: [{ 
+                      display:true,
+                       scaleLabel: {
+                       display:true,
+                       labelString: 'Number (1000s)',
+                       fontSize: 20,
+                       color:'rgb(169, 169, 169)'
+                   },
+                   ticks: {
+                    fontSize: 20
+                   }
+                  }]
+                }
+             }
+   
+});
+</script> 
+ 
+{% endblock %}
