@@ -41,7 +41,7 @@
            value = "{{request.form['gamma'] if request.form['gamma'] else '0.1'}}"
           onchange="$('~ output', this).val(value)" 
           oninput="$('~ output', this).val(value)" >
-          <output>{{request.form['gamma'] if request.form['gamma'] else 0.1}}</output> <br>
+          <output>{{request.form['gamma'] if request.form['gamma'] else 0.1}}</output> <br><br>
           <button type="submit" class="btn btn-info" style="width: 100px;" >SUBMIT</button>
        </form>
         </div>
